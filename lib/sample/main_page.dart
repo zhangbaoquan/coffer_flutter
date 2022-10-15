@@ -1,5 +1,5 @@
 import 'package:coffer_flutter/sample/lala_page.dart';
-import 'package:coffer_flutter/sample/lifecycle_page.dart';
+import 'package:coffer_flutter/sample/lifecycle_widget_page.dart';
 import 'package:coffer_flutter/sample/plugin_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 
 import 'gesture_page.dart';
 import 'layout_page.dart';
+import 'lifecycle_app_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         'res': (BuildContext context) => ResPage(),
         'lala': (BuildContext context) => LalaPage(),
         'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
+        'AppLifecycle': (BuildContext context) => AppLifecyclePage(),
         // 'launch': (BuildContext context) => LaunchPage(),
       },
     );
@@ -74,6 +76,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item('手势处理', GesturePage(), 'gesture'),
           _item('资源使用', ResPage(), 'res'),
           _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
+          _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
           // _item('开启三方应用', LaunchPage(),'launch'),
         ],
       ),
