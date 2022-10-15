@@ -1,3 +1,4 @@
+import 'package:coffer_flutter/sample/lala_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         'layout': (BuildContext context) => FlutterLayoutPage(),
         'gesture': (BuildContext context) => GesturePage(),
         'res': (BuildContext context) => ResPage(),
+        'lala': (BuildContext context) => LalaPage(),
         // 'launch': (BuildContext context) => LaunchPage(),
       },
     );
@@ -71,6 +73,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
     _item('layout', FlutterLayoutPage(),'layout'),
     _item('手势处理', GesturePage(),'gesture'),
     _item('资源使用', ResPage(),'res'),
+    _item('lala', LalaPage(),'lala'),
     // _item('开启三方应用', LaunchPage(),'launch'),
     ],
     ),
