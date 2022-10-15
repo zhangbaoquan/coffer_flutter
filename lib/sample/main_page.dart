@@ -11,75 +11,87 @@ import 'layout_page.dart';
 import 'lifecycle_app_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('导航使用'),
-        ),
-        body: RouterNavigator(),
-      ),
-      routes: <String, WidgetBuilder>{
-        'plugin': (BuildContext context) => PluginUse(),
-        'stateful': (BuildContext context) => StatefulUsePage(),
-        'stateless': (BuildContext context) => StatelessUse(),
-        'layout': (BuildContext context) => FlutterLayoutPage(),
-        'gesture': (BuildContext context) => GesturePage(),
-        'res': (BuildContext context) => ResPage(),
-        'lala': (BuildContext context) => LalaPage(),
-        'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
-        'AppLifecycle': (BuildContext context) => AppLifecyclePage(),
-        // 'launch': (BuildContext context) => LaunchPage(),
-      },
-    );
-  }
+  _MyAppState createState() => _MyAppState();
 }
 
-class RouterNavigator extends StatefulWidget {
-  @override
-  State<RouterNavigator> createState() => _RouterNavigatorState();
-}
-
-class _RouterNavigatorState extends State<RouterNavigator> {
+class _MyAppState extends State<MyApp> {
   // true 表示用路由名跳转，false 表示使用Navigator跳转
   bool byName = false;
+  bool useNightTheme = false;
+
+  // 默认显示日间模式
+  Brightness _brightness = Brightness.light;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        children: [
-          SwitchListTile(
-              title: Text('${byName ? '' : '不'}通过路由名跳转'),
-              value: byName,
-              onChanged: (value) {
-                setState(() {
-                  byName = value;
-                });
-              }),
-          _item('插件使用', PluginUse(), 'plugin'),
-          _item('StatefulUsePage', StatefulUsePage(), 'stateful'),
-          _item('StatelessUsePage', StatelessUse(), 'stateless'),
-          _item('layout', FlutterLayoutPage(), 'layout'),
-          _item('手势处理', GesturePage(), 'gesture'),
-          _item('资源使用', ResPage(), 'res'),
-          _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
-          _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
-          // _item('开启三方应用', LaunchPage(),'launch'),
-        ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          brightness: _brightness,
+          primarySwatch: Colors.blue,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text('导航使用'),
+          ),
+          body: _MainItem(),
+        ),
+        routes: <String, WidgetBuilder>{
+          'plugin': (BuildContext context) => PluginUse(),
+          'stateful': (BuildContext context) => StatefulUsePage(),
+          'stateless': (BuildContext context) => StatelessUse(),
+          'layout': (BuildContext context) => FlutterLayoutPage(),
+          'gesture': (BuildContext context) => GesturePage(),
+          'res': (BuildContext context) => ResPage(),
+          'lala': (BuildContext context) => LalaPage(),
+          'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
+          'AppLifecycle': (BuildContext context) => AppLifecyclePage(),
+          // 'launch': (BuildContext context) => LaunchPage(),
+        },
       ),
+    );
+  }
+
+  _MainItem(){
+    return Column(
+      children: [
+        SwitchListTile(
+            title: Text('${byName ? '' : '不'}通过路由名跳转'),
+            value: byName,
+            onChanged: (value) {
+              setState(() {
+                byName = value;
+              });
+            }),
+        SwitchListTile(
+            title: Text('当前是 ： ${useNightTheme ? '夜间模式' : '日间模式'}主题'),
+            value: useNightTheme,
+            onChanged: (value) {
+              setState(() {
+                if (value) {
+                  _brightness = Brightness.dark;
+                } else {
+                  _brightness = Brightness.light;
+                }
+                useNightTheme = value;
+              });
+            }),
+        _item('插件使用', PluginUse(), 'plugin'),
+        _item('StatefulUsePage', StatefulUsePage(), 'stateful'),
+        _item('StatelessUsePage', StatelessUse(), 'stateless'),
+        _item('layout', FlutterLayoutPage(), 'layout'),
+        _item('手势处理', GesturePage(), 'gesture'),
+        _item('资源使用', ResPage(), 'res'),
+        _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
+        _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
+        // _item('开启三方应用', LaunchPage(),'launch'),
+      ],
     );
   }
 
