@@ -1,6 +1,8 @@
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:flutter/material.dart';
 
+import 'layout_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
         // 'plugin': (BuildContext context) => PluginUse(),
         // 'stateful': (BuildContext context) => StatefulUsePage(),
         // 'stateless': (BuildContext context) => StatelessUse(),
-        // 'layout': (BuildContext context) => FlutterLayoutPage(),
+        'layout': (BuildContext context) => FlutterLayoutPage(),
         // 'gesture': (BuildContext context) => GesturePage(),
         'res': (BuildContext context) => ResPage(),
         // 'launch': (BuildContext context) => LaunchPage(),
@@ -63,7 +65,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
     // _item('插件使用', PluginUse(), 'plugin'),
     // _item('StatefulUsePage', StatefulUsePage(),'stateful'),
     // _item('StatelessUsePage', StatelessUse(),'stateless'),
-    // _item('layout', FlutterLayoutPage(),'layout'),
+    _item('layout', FlutterLayoutPage(),'layout'),
     // _item('手势处理', GesturePage(),'gesture'),
     _item('资源使用', ResPage(),'res'),
     // _item('开启三方应用', LaunchPage(),'launch'),
