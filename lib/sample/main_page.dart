@@ -1,4 +1,5 @@
 import 'package:coffer_flutter/sample/res_page.dart';
+import 'package:coffer_flutter/sample/stateless_page.dart';
 import 'package:flutter/material.dart';
 
 import 'gesture_page.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         // 'plugin': (BuildContext context) => PluginUse(),
         // 'stateful': (BuildContext context) => StatefulUsePage(),
-        // 'stateless': (BuildContext context) => StatelessUse(),
+        'stateless': (BuildContext context) => StatelessUse(),
         'layout': (BuildContext context) => FlutterLayoutPage(),
         'gesture': (BuildContext context) => GesturePage(),
         'res': (BuildContext context) => ResPage(),
@@ -65,7 +66,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
         }),
     // _item('插件使用', PluginUse(), 'plugin'),
     // _item('StatefulUsePage', StatefulUsePage(),'stateful'),
-    // _item('StatelessUsePage', StatelessUse(),'stateless'),
+    _item('StatelessUsePage', StatelessUse(),'stateless'),
     _item('layout', FlutterLayoutPage(),'layout'),
     _item('手势处理', GesturePage(),'gesture'),
     _item('资源使用', ResPage(),'res'),
