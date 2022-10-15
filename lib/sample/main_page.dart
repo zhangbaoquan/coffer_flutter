@@ -1,4 +1,5 @@
 import 'package:coffer_flutter/sample/lala_page.dart';
+import 'package:coffer_flutter/sample/plugin_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         body: RouterNavigator(),
       ),
       routes: <String, WidgetBuilder>{
-        // 'plugin': (BuildContext context) => PluginUse(),
+        'plugin': (BuildContext context) => PluginUse(),
         'stateful': (BuildContext context) => StatefulUsePage(),
         'stateless': (BuildContext context) => StatelessUse(),
         'layout': (BuildContext context) => FlutterLayoutPage(),
@@ -67,7 +68,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
             byName = value;
           });
         }),
-    // _item('插件使用', PluginUse(), 'plugin'),
+    _item('插件使用', PluginUse(), 'plugin'),
     _item('StatefulUsePage', StatefulUsePage(),'stateful'),
     _item('StatelessUsePage', StatelessUse(),'stateless'),
     _item('layout', FlutterLayoutPage(),'layout'),
