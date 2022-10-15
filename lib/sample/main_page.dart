@@ -1,4 +1,5 @@
 import 'package:coffer_flutter/sample/lala_page.dart';
+import 'package:coffer_flutter/sample/lifecycle_page.dart';
 import 'package:coffer_flutter/sample/plugin_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
@@ -13,9 +14,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp
-
-  ({super.key});
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -39,6 +38,7 @@ class MyApp extends StatelessWidget {
         'gesture': (BuildContext context) => GesturePage(),
         'res': (BuildContext context) => ResPage(),
         'lala': (BuildContext context) => LalaPage(),
+        'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
         // 'launch': (BuildContext context) => LaunchPage(),
       },
     );
@@ -46,7 +46,6 @@ class MyApp extends StatelessWidget {
 }
 
 class RouterNavigator extends StatefulWidget {
-
   @override
   State<RouterNavigator> createState() => _RouterNavigatorState();
 }
@@ -58,26 +57,26 @@ class _RouterNavigatorState extends State<RouterNavigator> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-            children: [
-        SwitchListTile(
-        title: Text('${byName?'':'不'}通过路由名跳转'),
-        value: byName,
-        onChanged: (value) {
-          setState(() {
-            byName = value;
-          });
-        }),
-    _item('插件使用', PluginUse(), 'plugin'),
-    _item('StatefulUsePage', StatefulUsePage(),'stateful'),
-    _item('StatelessUsePage', StatelessUse(),'stateless'),
-    _item('layout', FlutterLayoutPage(),'layout'),
-    _item('手势处理', GesturePage(),'gesture'),
-    _item('资源使用', ResPage(),'res'),
-    _item('lala', LalaPage(),'lala'),
-    // _item('开启三方应用', LaunchPage(),'launch'),
-    ],
-    ),
+      child: Column(
+        children: [
+          SwitchListTile(
+              title: Text('${byName ? '' : '不'}通过路由名跳转'),
+              value: byName,
+              onChanged: (value) {
+                setState(() {
+                  byName = value;
+                });
+              }),
+          _item('插件使用', PluginUse(), 'plugin'),
+          _item('StatefulUsePage', StatefulUsePage(), 'stateful'),
+          _item('StatelessUsePage', StatelessUse(), 'stateless'),
+          _item('layout', FlutterLayoutPage(), 'layout'),
+          _item('手势处理', GesturePage(), 'gesture'),
+          _item('资源使用', ResPage(), 'res'),
+          _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
+          // _item('开启三方应用', LaunchPage(),'launch'),
+        ],
+      ),
     );
   }
 
@@ -86,10 +85,11 @@ class _RouterNavigatorState extends State<RouterNavigator> {
       child: ElevatedButton(
         onPressed: () {
           // true 表示用路由名跳转，false 表示使用Navigator跳转
-          if(byName){
+          if (byName) {
             Navigator.pushNamed(context, routeName);
-          }else{
-            Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+          } else {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => page));
           }
         },
         child: Text(title),
