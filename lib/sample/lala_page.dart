@@ -2,7 +2,8 @@
 /// date         : 2022/10/11
 /// description  :
 import 'package:flutter/material.dart';
-import 'package:flutter_color_plugin/flutter_color_plugin.dart';
+import 'package:transparent_image/transparent_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 
 class LalaPage extends StatefulWidget {
   @override
@@ -35,6 +36,18 @@ class _LalaPageState extends State<LalaPage> {
                   'http://www.devio.org/img/avatar.png',
                 ),
               ),
+            ),
+            Stack(
+              children: [
+                Center(
+                  child: FadeInImage.memoryNetwork(
+                    placeholder: kTransparentImage,
+                    image: 'http://www.devio.org/img/avatar.png',
+                    width: 100,
+                    height: 100,
+                  ),
+                )
+              ],
             ),
             Padding(
               padding: EdgeInsets.only(top: 30),

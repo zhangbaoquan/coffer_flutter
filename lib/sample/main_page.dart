@@ -108,6 +108,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item('资源使用', ResPage(), 'res'),
           _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
           _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
+          _item('哈哈', LalaPage(), 'lala'),
           // _item('开启三方应用', LaunchPage(),'launch'),
         ],
       ),
