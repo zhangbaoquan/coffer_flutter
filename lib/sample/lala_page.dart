@@ -3,7 +3,7 @@
 /// description  :
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-// import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class LalaPage extends StatefulWidget {
   @override
@@ -36,6 +36,11 @@ class _LalaPageState extends State<LalaPage> {
                   'http://www.devio.org/img/avatar.png',
                 ),
               ),
+            ),
+            CachedNetworkImage(
+              placeholder: (context, url) =>
+              const CircularProgressIndicator(),
+              imageUrl: 'https://via.placeholder.com/200x150',
             ),
             Stack(
               children: [
