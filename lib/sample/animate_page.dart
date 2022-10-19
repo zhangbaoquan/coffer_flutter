@@ -25,13 +25,13 @@ class _AnimatePageState extends State<AnimatePage>
     // 补间动画
     animation = Tween<double>(begin: 0, end: 300).animate(controller);
     animation.addListener(() {
-      // 动画每次变动都会执行到这里，这里可以获取并更新动画的值
+      // 动画值每次变动都会被调用，这里可以获取并更新动画的值
       setState(() {
         animationValue = animation.value;
       });
     });
     animation.addStatusListener((AnimationStatus status) {
-      // 获取动画的状态
+      // 动画状态发生改变的时候被调用
       setState(() {
         animationStatus = status;
       });
