@@ -1,3 +1,4 @@
+import 'package:coffer_flutter/sample/animate_page.dart';
 import 'package:coffer_flutter/sample/lala_page.dart';
 import 'package:coffer_flutter/sample/lifecycle_widget_page.dart';
 import 'package:coffer_flutter/sample/plugin_page.dart';
@@ -50,6 +51,7 @@ class _MyAppState extends State<MyApp> {
           'lala': (BuildContext context) => LalaPage(),
           'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
           'AppLifecycle': (BuildContext context) => AppLifecyclePage(),
+          'animate': (BuildContext context) => AnimatePage(),
           // 'launch': (BuildContext context) => LaunchPage(),
         },
       ),
@@ -108,6 +110,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item('资源使用', ResPage(), 'res'),
           _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
           _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
+          _item('动画', AnimatePage(), 'animate'),
           _item('哈哈', LalaPage(), 'lala'),
           // _item('开启三方应用', LaunchPage(),'launch'),
         ],
