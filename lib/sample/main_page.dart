@@ -105,15 +105,34 @@ class _RouterNavigatorState extends State<RouterNavigator> {
                 });
               }),
           _item('插件使用', PluginUse(), 'plugin'),
-          _item('StatefulUsePage', StatefulUsePage(), 'stateful'),
-          _item('StatelessUsePage', StatelessUse(), 'stateless'),
+          Wrap(
+            spacing: 10,
+            children: [
+              _item('StatefulUsePage', StatefulUsePage(), 'stateful'),
+              _item('StatelessUsePage', StatelessUse(), 'stateless'),
+            ],
+          ),
           _item('layout', FlutterLayoutPage(), 'layout'),
           _item('手势处理', GesturePage(), 'gesture'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(padding: EdgeInsets.symmetric(horizontal: 10,),child:
+              _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),),
+              Padding(padding: EdgeInsets.symmetric(horizontal: 10,),child:
+              _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),),
+            ],
+          ),
           _item('资源使用', ResPage(), 'res'),
-          _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
-          _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
-          _item('动画', AnimatePage(), 'animate'),
-          _item('动画2', AnimateWidgetPage(), 'animate2'),
+          Wrap(
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.center,
+            spacing: 10,
+            children: [
+              _item('动画', AnimatePage(), 'animate'),
+              _item('动画2', AnimateWidgetPage(), 'animate2'),
+            ],
+          ),
           _item('哈哈', LalaPage(), 'lala'),
           // _item('开启三方应用', LaunchPage(),'launch'),
         ],
