@@ -7,6 +7,7 @@ import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
 import 'package:flutter/material.dart';
 
+import 'animate_page2.dart';
 import 'gesture_page.dart';
 import 'layout_page.dart';
 import 'lifecycle_app_page.dart';
@@ -52,6 +53,7 @@ class _MyAppState extends State<MyApp> {
           'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
           'AppLifecycle': (BuildContext context) => AppLifecyclePage(),
           'animate': (BuildContext context) => AnimatePage(),
+          'animate2': (BuildContext context) => AnimateWidgetPage(),
           // 'launch': (BuildContext context) => LaunchPage(),
         },
       ),
@@ -111,6 +113,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
           _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
           _item('动画', AnimatePage(), 'animate'),
+          _item('动画2', AnimateWidgetPage(), 'animate2'),
           _item('哈哈', LalaPage(), 'lala'),
           // _item('开启三方应用', LaunchPage(),'launch'),
         ],
