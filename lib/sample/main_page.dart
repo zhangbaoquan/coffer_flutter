@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'animate_page2.dart';
 import 'animate_page3.dart';
 import 'gesture_page.dart';
+import 'hero_animate_page1.dart';
 import 'layout_page.dart';
 import 'lifecycle_app_page.dart';
 
@@ -56,6 +57,7 @@ class _MyAppState extends State<MyApp> {
           'animate': (BuildContext context) => AnimatePage(),
           'animate2': (BuildContext context) => AnimateWidgetPage(),
           'animate3': (BuildContext context) => AnimateBuilderPage(),
+          'Hero1': (BuildContext context) => HeroAnimationPage(),
           // 'launch': (BuildContext context) => LaunchPage(),
         },
       ),
@@ -137,6 +139,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
             ],
           ),
           _item('哈哈', LalaPage(), 'lala'),
+          _item('Hero 动画1', HeroAnimationPage(), 'Hero1'),
           // _item('开启三方应用', LaunchPage(),'launch'),
         ],
       ),
