@@ -13,6 +13,12 @@ class TabbedAppBarPage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Tabbed AppBar'),
+            leading: GestureDetector(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back),
+            ),
             bottom: TabBar(
               isScrollable: true,
               tabs: choices.map((Choice choice) {

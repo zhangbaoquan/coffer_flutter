@@ -5,11 +5,13 @@ import 'package:coffer_flutter/sample/plugin_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
+import 'package:coffer_flutter/sample/topNavigator_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'animate_page2.dart';
 import 'animate_page3.dart';
+import 'bottomNavigator_page.dart';
 import 'gesture_page.dart';
 import 'hero_animate_page1.dart';
 import 'layout_page.dart';
@@ -59,6 +61,8 @@ class _MyAppState extends State<MyApp> {
           'animate2': (BuildContext context) => AnimateWidgetPage(),
           'animate3': (BuildContext context) => AnimateBuilderPage(),
           'Hero1': (BuildContext context) => HeroAnimationPage(),
+          'TopTab': (BuildContext context) => TabbedAppBarPage(),
+          'BottomTab': (BuildContext context) => BottomTabNavigatorPage(),
           // 'launch': (BuildContext context) => LaunchPage(),
         },
       ),
@@ -158,6 +162,14 @@ class _RouterNavigatorState extends State<RouterNavigator> {
               _item('动画2', AnimateWidgetPage(), 'animate2'),
               _item('动画3', AnimateBuilderPage(), 'animate3'),
               _item('Hero 动画1', HeroAnimationPage(), 'Hero1'),
+              _item('Hero 动画1', HeroAnimationPage(), 'Hero1'),
+            ],
+          ),
+          Wrap(
+            spacing: 10,
+            children: [
+              _item('顶部导航', TabbedAppBarPage(), 'TopTab'),
+              _item('底部导航', BottomTabNavigatorPage(), 'BottomTab'),
             ],
           ),
           _item('哈哈', LalaPage(), 'lala'),
