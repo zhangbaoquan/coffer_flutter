@@ -5,57 +5,51 @@
 import 'package:flutter/material.dart';
 
 
-class DrawerPage extends StatelessWidget {
+class DrawerPage extends StatefulWidget {
   final appTitle = 'Drawer Demo';
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: appTitle,
-      home: MyHomePage(title: appTitle),
-    );
-  }
+  _DrawerPageState createState() => _DrawerPageState(title: appTitle);
 }
 
-class MyHomePage extends StatelessWidget {
+class _DrawerPageState extends State<StatefulWidget> {
   final String title;
 
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  _DrawerPageState({required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('My Page!')),
-      drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the Drawer if there isn't enough vertical
-        // space to fit everything.
+      appBar: AppBar(
+          title: Text(title),
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.pop(context);
+          }, icon: const Icon(Icons.share))
+        ],
+      ),
+      body: const Center(child: Text('My Page!')),
+      drawer: Drawer( // 侧拉
         child: ListView(
-          // Important: Remove any padding from the ListView.
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Text('Drawer Header'),
+            const DrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
+              child: Text('Drawer Header'),
             ),
             ListTile(
-              title: Text('Item 1'),
+              title: const Text('Item 1'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
+                // 收起侧拉
                 Navigator.pop(context);
               },
             ),
             ListTile(
               title: Text('Item 2'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
+                // 收起侧拉
                 Navigator.pop(context);
               },
             ),

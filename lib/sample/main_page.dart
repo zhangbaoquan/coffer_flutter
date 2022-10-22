@@ -8,6 +8,7 @@ import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
 import 'package:coffer_flutter/sample/topNavigator_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'animate_page2.dart';
 import 'animate_page3.dart';
 import 'bottomNavigator_page.dart';
@@ -194,7 +195,9 @@ class _RouterNavigatorState extends State<RouterNavigator> {
   }
 
   _item2(String title, page, String routeName) {
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
+      transform: Matrix4.rotationZ(.2),
       width: 80,
       height: 50,
       child: DecoratedBox(
@@ -221,7 +224,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
                     context, MaterialPageRoute(builder: (context) => page));
               }
             },
-            child: Text(title),
+            child: Transform.scale(scale: 1.5, child: Text(title)),
           ),
         ),
       ),
