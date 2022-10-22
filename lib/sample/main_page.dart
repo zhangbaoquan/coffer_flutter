@@ -1,4 +1,5 @@
 import 'package:coffer_flutter/sample/animate_page.dart';
+import 'package:coffer_flutter/sample/drawer_page.dart';
 import 'package:coffer_flutter/sample/lala_page.dart';
 import 'package:coffer_flutter/sample/lifecycle_widget_page.dart';
 import 'package:coffer_flutter/sample/plugin_page.dart';
@@ -63,6 +64,7 @@ class _MyAppState extends State<MyApp> {
           'Hero1': (BuildContext context) => HeroAnimationPage(),
           'TopTab': (BuildContext context) => TabbedAppBarPage(),
           'BottomTab': (BuildContext context) => BottomTabNavigatorPage(),
+          'DrawerPage': (BuildContext context) => DrawerPage(),
           // 'launch': (BuildContext context) => LaunchPage(),
         },
       ),
@@ -170,6 +172,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
             children: [
               _item('顶部导航', TabbedAppBarPage(), 'TopTab'),
               _item('底部导航', BottomTabNavigatorPage(), 'BottomTab'),
+              _item('侧拉导航', DrawerPage(), 'DrawerPage'),
             ],
           ),
           _item('哈哈', LalaPage(), 'lala'),
