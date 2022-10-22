@@ -5,6 +5,7 @@ import 'package:coffer_flutter/sample/plugin_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'animate_page2.dart';
@@ -64,7 +65,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  _MainItem(){
+  _MainItem() {
     return Column(
       children: [
         SwitchListTile(
@@ -108,7 +109,13 @@ class _RouterNavigatorState extends State<RouterNavigator> {
                   byName = value;
                 });
               }),
-          _item('插件使用', PluginUse(), 'plugin'),
+          Wrap(
+            spacing: 10,
+            children: [
+              _item('插件使用', PluginUse(), 'plugin'),
+              _item('资源使用', ResPage(), 'res'),
+            ],
+          ),
           Wrap(
             spacing: 10,
             children: [
@@ -116,18 +123,32 @@ class _RouterNavigatorState extends State<RouterNavigator> {
               _item('StatelessUsePage', StatelessUse(), 'stateless'),
             ],
           ),
-          _item('layout', FlutterLayoutPage(), 'layout'),
-          _item('手势处理', GesturePage(), 'gesture'),
+          Wrap(
+            direction: Axis.horizontal,
+            spacing: 10,
+            alignment: WrapAlignment.center,
+            children: [
+              _item('layout', FlutterLayoutPage(), 'layout'),
+              _item('手势处理', GesturePage(), 'gesture'),
+            ],
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(padding: EdgeInsets.symmetric(horizontal: 10,),child:
-              _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),),
-              Padding(padding: EdgeInsets.symmetric(horizontal: 10,),child:
-              _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                child: _item('组件生命周期', WidgetLifecyclePage(), 'lifecycle'),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
+                child: _item('应用生命周期', AppLifecyclePage(), 'AppLifecycle'),
+              ),
             ],
           ),
-          _item('资源使用', ResPage(), 'res'),
           Wrap(
             direction: Axis.horizontal,
             alignment: WrapAlignment.center,
@@ -136,10 +157,10 @@ class _RouterNavigatorState extends State<RouterNavigator> {
               _item('动画', AnimatePage(), 'animate'),
               _item('动画2', AnimateWidgetPage(), 'animate2'),
               _item('动画3', AnimateBuilderPage(), 'animate3'),
+              _item('Hero 动画1', HeroAnimationPage(), 'Hero1'),
             ],
           ),
           _item('哈哈', LalaPage(), 'lala'),
-          _item('Hero 动画1', HeroAnimationPage(), 'Hero1'),
           // _item('开启三方应用', LaunchPage(),'launch'),
         ],
       ),
@@ -163,4 +184,3 @@ class _RouterNavigatorState extends State<RouterNavigator> {
     );
   }
 }
-
