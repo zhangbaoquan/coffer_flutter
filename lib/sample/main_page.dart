@@ -18,10 +18,12 @@ import 'layout_page.dart';
 import 'lifecycle_app_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -34,39 +36,37 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          brightness: _brightness,
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('导航使用'),
-          ),
-          body: _MainItem(),
-        ),
-        routes: <String, WidgetBuilder>{
-          'plugin': (BuildContext context) => PluginUse(),
-          'stateful': (BuildContext context) => StatefulUsePage(),
-          'stateless': (BuildContext context) => StatelessUse(),
-          'layout': (BuildContext context) => FlutterLayoutPage(),
-          'gesture': (BuildContext context) => GesturePage(),
-          'res': (BuildContext context) => ResPage(),
-          'lala': (BuildContext context) => LalaPage(),
-          'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
-          'AppLifecycle': (BuildContext context) => AppLifecyclePage(),
-          'animate': (BuildContext context) => AnimatePage(),
-          'animate2': (BuildContext context) => AnimateWidgetPage(),
-          'animate3': (BuildContext context) => AnimateBuilderPage(),
-          'Hero1': (BuildContext context) => HeroAnimationPage(),
-          'TopTab': (BuildContext context) => TabbedAppBarPage(),
-          'BottomTab': (BuildContext context) => BottomTabNavigatorPage(),
-          'DrawerPage': (BuildContext context) => DrawerPage(),
-          // 'launch': (BuildContext context) => LaunchPage(),
-        },
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        brightness: _brightness,
+        primarySwatch: Colors.blue,
       ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('导航使用'),
+        ),
+        body: _MainItem(),
+      ),
+      routes: <String, WidgetBuilder>{
+        'plugin': (BuildContext context) => PluginUse(),
+        'stateful': (BuildContext context) => StatefulUsePage(),
+        'stateless': (BuildContext context) => StatelessUse(),
+        'layout': (BuildContext context) => FlutterLayoutPage(),
+        'gesture': (BuildContext context) => GesturePage(),
+        'res': (BuildContext context) => ResPage(),
+        'lala': (BuildContext context) => LalaPage(),
+        'lifecycle': (BuildContext context) => WidgetLifecyclePage(),
+        'AppLifecycle': (BuildContext context) => AppLifecyclePage(),
+        'animate': (BuildContext context) => AnimatePage(),
+        'animate2': (BuildContext context) => AnimateWidgetPage(),
+        'animate3': (BuildContext context) => AnimateBuilderPage(),
+        'Hero1': (BuildContext context) => HeroAnimationPage(),
+        'TopTab': (BuildContext context) => TabbedAppBarPage(),
+        'BottomTab': (BuildContext context) => BottomTabNavigatorPage(),
+        'DrawerPage': (BuildContext context) => DrawerPage(),
+        // 'launch': (BuildContext context) => LaunchPage(),
+      },
     );
   }
 
