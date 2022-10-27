@@ -4,6 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class LalaPage extends StatefulWidget {
   @override
@@ -11,6 +12,8 @@ class LalaPage extends StatefulWidget {
 }
 
 class _LalaPageState extends State<LalaPage> {
+  List _imageUrls = ['https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg'
+  ,'https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +31,20 @@ class _LalaPageState extends State<LalaPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              height: 160,
+              child: Swiper(
+                itemCount: _imageUrls.length,
+                autoplay: true,
+                itemBuilder: (BuildContext context,int index){
+                  return Image.network(
+                    _imageUrls[index],
+                    fit: BoxFit.fill,
+                  );
+                },
+                pagination: SwiperPagination(),
+              ),
+            ),
             ClipOval(
               child: SizedBox(
                 width: 100,
