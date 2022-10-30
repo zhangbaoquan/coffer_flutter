@@ -1,3 +1,4 @@
+import 'package:coffer_flutter/sample/List1_page.dart';
 import 'package:coffer_flutter/sample/animate_page.dart';
 import 'package:coffer_flutter/sample/drawer_page.dart';
 import 'package:coffer_flutter/sample/futureBuilder_page.dart';
@@ -71,6 +72,7 @@ class _MyAppState extends State<MyApp> {
         'netPage': (BuildContext context) => NetPage(),
         'FutureBuilderPage': (BuildContext context) => FutureBuilderPage(),
         'sp': (BuildContext context) => SharedPreferencesPage(),
+        'list1': (BuildContext context) => ListPage1(),
         // 'launch': (BuildContext context) => LaunchPage(),
       },
     );
@@ -186,6 +188,12 @@ class _RouterNavigatorState extends State<RouterNavigator> {
             _item('网络编程', NetPage(), 'netPage'),
             _item('Future 练习', FutureBuilderPage(), 'FutureBuilderPage'),
             _item('本地存储', SharedPreferencesPage(), 'sp'),
+          ],
+        ),
+        Wrap(
+          spacing: 10,
+          children: [
+            _item('列表1', ListPage1(), 'list1'),
           ],
         ),
         _item2('哈哈', LalaPage(), 'lala'),
