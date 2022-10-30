@@ -1,5 +1,6 @@
 import 'package:coffer_flutter/sample/animate_page.dart';
 import 'package:coffer_flutter/sample/drawer_page.dart';
+import 'package:coffer_flutter/sample/futureBuilder_page.dart';
 import 'package:coffer_flutter/sample/lala_page.dart';
 import 'package:coffer_flutter/sample/lifecycle_widget_page.dart';
 import 'package:coffer_flutter/sample/net_page.dart';
@@ -67,6 +68,7 @@ class _MyAppState extends State<MyApp> {
         'BottomTab': (BuildContext context) => BottomTabNavigatorPage(),
         'DrawerPage': (BuildContext context) => DrawerPage(),
         'netPage': (BuildContext context) => NetPage(),
+        'FutureBuilderPage': (BuildContext context) => FutureBuilderPage(),
         // 'launch': (BuildContext context) => LaunchPage(),
       },
     );
@@ -180,6 +182,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           spacing: 10,
           children: [
             _item('网络编程', NetPage(), 'netPage'),
+            _item('Future 练习', FutureBuilderPage(), 'FutureBuilderPage'),
           ],
         ),
         _item2('哈哈', LalaPage(), 'lala'),
