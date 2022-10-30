@@ -14,13 +14,13 @@ class _ListPage1State extends State<ListPage1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('列表1'),
+        title: const Text('列表1'),
         leading: GestureDetector(
           onTap: () {
             // 返回上个页面
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: Center(
@@ -38,12 +38,12 @@ class _ListPage1State extends State<ListPage1> {
   Widget _item(String city) {
     return Container(
       height: 80,
-      margin: EdgeInsets.only(bottom: 5),
+      margin: const EdgeInsets.only(bottom: 5),
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: Colors.teal),
+      decoration: const BoxDecoration(color: Colors.teal),
       child: Text(
         city,
-        style: TextStyle(color: Colors.white, fontSize: 20),
+        style: const TextStyle(color: Colors.white, fontSize: 20),
       ),
     );
   }

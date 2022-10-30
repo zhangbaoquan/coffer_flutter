@@ -13,8 +13,8 @@ import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
 import 'package:coffer_flutter/sample/topNavigator_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'List2_page.dart';
+import 'List4_page.dart';
 import 'animate_page2.dart';
 import 'animate_page3.dart';
 import 'bottomNavigator_page.dart';
@@ -77,6 +77,7 @@ class _MyAppState extends State<MyApp> {
         'list1': (BuildContext context) => ListPage1(),
         'list2': (BuildContext context) => ListPage2(),
         'list3': (BuildContext context) => ListPage3(),
+        'list4': (BuildContext context) => ListPage4(),
         // 'launch': (BuildContext context) => LaunchPage(),
       },
     );
@@ -200,6 +201,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
             _item('列表1', ListPage1(), 'list1'),
             _item('可展开列表', ListPage2(), 'list2'),
             _item('网格布局', ListPage3(), 'list3'),
+            _item('下拉刷新', ListPage4(), 'list4'),
           ],
         ),
         _item2('哈哈', LalaPage(), 'lala'),

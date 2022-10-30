@@ -14,13 +14,13 @@ class _ListPage3State extends State<ListPage3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('网格布局'),
+        title: const Text('网格布局'),
         leading: GestureDetector(
           onTap: () {
             // 返回上个页面
             Navigator.pop(context);
           },
-          child: Icon(Icons.arrow_back),
+          child: const Icon(Icons.arrow_back),
         ),
       ),
       body: Center(
@@ -41,10 +41,10 @@ class _ListPage3State extends State<ListPage3> {
       height: 80,
       margin: const EdgeInsets.only(top:3,bottom: 2,right: 2,left: 3,),
       alignment: Alignment.center,
-      decoration: BoxDecoration(color: Colors.teal),
+      decoration: const BoxDecoration(color: Colors.teal),
       child: Text(
         city,
-        style: TextStyle(color: Colors.white, fontSize: 20),
+        style: const TextStyle(color: Colors.white, fontSize: 20),
       ),
     );
   }
