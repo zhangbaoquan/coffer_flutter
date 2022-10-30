@@ -13,7 +13,8 @@ class LalaPage extends StatefulWidget {
 
 class _LalaPageState extends State<LalaPage> {
   List _imageUrls = ['https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg'
-  ,'https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg'];
+  ,'https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg',
+    'https://dimg04.c-ctrip.com/images/700c10000000pdili7D8B_780_235_57.jpg'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
