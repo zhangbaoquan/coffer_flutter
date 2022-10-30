@@ -53,6 +53,7 @@ class _NetPageState extends State<NetPage> {
           children: <Widget>[
             InkWell(
               onTap: (){
+                /// 通过fetchGet().then获取Fluter的返回结果，其实Future可以理解为ES5中的Promise
                 fetchGet().then((CommonModel value){
                   setState(() {
                     showResult = '请求结果：\n hideAppBar：${value.hideAppBar}\nicon：${value.icon}';
