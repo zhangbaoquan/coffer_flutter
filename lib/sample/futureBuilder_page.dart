@@ -62,7 +62,7 @@ class _FutureBuilderPageState extends State<FutureBuilderPage> {
                         // 网络请求失败
                         return Text(
                           '${snapshot.error}',
-                          style: TextStyle(color: Colors.red),
+                          style: const TextStyle(color: Colors.red),
                         );
                       } else {
                         // 网络请求成功

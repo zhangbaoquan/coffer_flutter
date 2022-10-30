@@ -6,6 +6,7 @@ import 'package:coffer_flutter/sample/lifecycle_widget_page.dart';
 import 'package:coffer_flutter/sample/net_page.dart';
 import 'package:coffer_flutter/sample/plugin_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
+import 'package:coffer_flutter/sample/shared_preferences_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
 import 'package:coffer_flutter/sample/topNavigator_page.dart';
@@ -69,6 +70,7 @@ class _MyAppState extends State<MyApp> {
         'DrawerPage': (BuildContext context) => DrawerPage(),
         'netPage': (BuildContext context) => NetPage(),
         'FutureBuilderPage': (BuildContext context) => FutureBuilderPage(),
+        'sp': (BuildContext context) => SharedPreferencesPage(),
         // 'launch': (BuildContext context) => LaunchPage(),
       },
     );
@@ -183,6 +185,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           children: [
             _item('网络编程', NetPage(), 'netPage'),
             _item('Future 练习', FutureBuilderPage(), 'FutureBuilderPage'),
+            _item('本地存储', SharedPreferencesPage(), 'sp'),
           ],
         ),
         _item2('哈哈', LalaPage(), 'lala'),
