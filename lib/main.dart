@@ -19,6 +19,7 @@ import 'package:coffer_flutter/sample/shared_preferences_page.dart';
 import 'package:coffer_flutter/sample/stateful_page.dart';
 import 'package:coffer_flutter/sample/stateless_page.dart';
 import 'package:coffer_flutter/sample/topNavigator_page.dart';
+import 'package:coffer_flutter/sample/upload_page.dart';
 import 'package:flutter/material.dart';
 
 import 'sample/gesture_page.dart';
@@ -204,6 +205,12 @@ class _RouterNavigatorState extends State<RouterNavigator> {
             _item('可展开列表', ListPage2(), 'list2'),
             _item('网格布局', ListPage3(), 'list3'),
             _item('下拉刷新', ListPage4(), 'list4'),
+          ],
+        ),
+        Wrap(
+          spacing: 10,
+          children: [
+            _item('上传页面', const UploadPage(), '上传页面'),
           ],
         ),
         _item2('哈哈', LalaPage(), 'lala'),
