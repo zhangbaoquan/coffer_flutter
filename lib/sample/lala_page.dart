@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
+// import 'package:flutter_swiper/flutter_swiper.dart';
 
 class LalaPage extends StatefulWidget {
   @override
@@ -34,16 +34,9 @@ class _LalaPageState extends State<LalaPage> {
           children: <Widget>[
             Container(
               height: 160,
-              child: Swiper(
-                itemCount: _imageUrls.length,
-                autoplay: true,
-                itemBuilder: (BuildContext context,int index){
-                  return Image.network(
-                    _imageUrls[index],
-                    fit: BoxFit.fill,
-                  );
-                },
-                pagination: SwiperPagination(),
+              child: Image.network(
+                _imageUrls[0],
+                fit: BoxFit.fill,
               ),
             ),
             ClipOval(

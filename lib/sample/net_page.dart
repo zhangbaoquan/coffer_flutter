@@ -36,6 +36,9 @@ class _NetPageState extends State<NetPage> {
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+
+    });
     return Scaffold(
       appBar: AppBar(
         title: Text('网络编程'),
