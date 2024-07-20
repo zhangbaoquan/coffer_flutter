@@ -49,12 +49,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   flutter_color_plugin: ^1.1.0
   transparent_image: ^2.0.0
-  cached_network_image: ^3.2.2
+  cached_network_image: ^3.3.1
   url_launcher: ^6.1.6
 #  flutter_swiper: ^1.1.6
   http: ^0.13.5
   shared_preferences: ^2.0.15
   get: ^4.6.5
+  image_picker: ^1.1.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
