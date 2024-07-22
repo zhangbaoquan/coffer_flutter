@@ -13,6 +13,7 @@ import 'package:coffer_flutter/sample/lala_page.dart';
 import 'package:coffer_flutter/sample/lifecycle_app_page.dart';
 import 'package:coffer_flutter/sample/lifecycle_widget_page.dart';
 import 'package:coffer_flutter/sample/net_page.dart';
+import 'package:coffer_flutter/sample/photo_page.dart';
 import 'package:coffer_flutter/sample/plugin_page.dart';
 import 'package:coffer_flutter/sample/res_page.dart';
 import 'package:coffer_flutter/sample/shared_preferences_page.dart';
@@ -23,6 +24,7 @@ import 'package:coffer_flutter/sample/upload_page.dart';
 import 'package:flutter/material.dart';
 
 import 'sample/gesture_page.dart';
+import 'sample/image_picker_page.dart';
 import 'sample/layout_page.dart';
 
 
@@ -211,6 +213,8 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           spacing: 10,
           children: [
             _item('上传页面', const UploadPage(), '上传页面'),
+            _item('图片选择页面', const ImagePickerPage(), '图片选择页面'),
+            _item('拍照与图片处理', const PhotoPage(), '拍照与图片处理'),
           ],
         ),
         _item2('哈哈', LalaPage(), 'lala'),
