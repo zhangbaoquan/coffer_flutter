@@ -82,7 +82,7 @@ class _PhotoPageState extends State<PhotoPage> {
         label: 'image_picker_example_picked_image',
         child: Image.file(
           // File(_mediaFileList![0].path),
-          File("/data/user/0/com.example.coffer_flutter/cache/didi.png"),
+          File("/data/user/0/com.example.coffer_flutter/app_flutter/didi.png"),
           errorBuilder: (BuildContext context, Object error,
               StackTrace? stackTrace) {
             return const Center(
@@ -105,13 +105,17 @@ class _PhotoPageState extends State<PhotoPage> {
   }
 
   void handleConvert() async{
-    // File outFile = await convertImage(inputPath: _mediaFileList![0].path,outputPath: "/data/user/0/com.example.coffer_flutter/cache/didi.png");
+    ///获取本地磁盘路径
+    /*
+     * 在Android平台中获取的是/data/user/0/com.example.coffer_flutter/app_flutter
+     * 此方法在在iOS平台获取的是Documents路径
+     */
+    String outPath = "";
+    Directory ll = await getApplicationDocumentsDirectory();
+    outPath = ll.path;
+    debugPrint("hahah_tag 外部目录 : ${ll.path}");
+    // File outFile = await convertImage(inputPath: _mediaFileList![0].path,outputPath: "$outPath/didi.png");
     // debugPrint("hahah_tag 转换后的 path : ${outFile.path}");
-
-    Directory? ll = await getExternalStorageDirectory();
-    debugPrint("hahah_tag 外部目录 : ${ll?.path}");
-    // getApplicationCacheDirectory();
-    // Directory? l2 = await getExternalCacheDirectories();
   }
 
   Widget _handlePreview() {
