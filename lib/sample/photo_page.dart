@@ -273,7 +273,14 @@ class _PhotoPageState extends State<PhotoPage> {
 
     final Directory _directory = await getTemporaryDirectory();
     debugPrint("hahah_tag _directory path : ${_directory.path}");
-    final Directory _imageDirectory = await Directory('${_directory.path}/image/').create(recursive: true);
+    String dir = '${_directory.path}/image/';
+    final Directory _imageDirectory = Directory(dir);
+    bool existsSync = _imageDirectory.existsSync();
+    if(existsSync){
+      debugPrint("hahah_tag 当前目录存在");
+    } else {
+      await _imageDirectory.create(recursive: true);
+    }
     String _targetPath = _imageDirectory.path;
     debugPrint("hahah_tag _targetPath : $_targetPath");
 
