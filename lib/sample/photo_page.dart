@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:intl/intl.dart';
 
 
 /// author       : coffer
@@ -42,6 +43,8 @@ class _PhotoPageState extends State<PhotoPage> {
       try {
         final XFile? pickedFile = await _picker.pickImage(
           source: source,
+          maxWidth: 1920,
+          maxHeight: 1080
         );
         // debugPrint("hahah_tag _onImageButtonPressed image size : ${pickedFile?.path}");
         imgPath = await imageAddWaterMark(pickedFile!.path,"lala");
@@ -57,24 +60,24 @@ class _PhotoPageState extends State<PhotoPage> {
     }
   }
 
-  Future<String> convertImage({required String inputPath}) async {
-    final File inputFile = File(inputPath);
-    debugPrint("hahah_tag 原始大小 : ${inputFile.lengthSync()}");
-    final imageBytes = await inputFile.readAsBytes();
-    final img.Image image = img.decodeImage(imageBytes)!;
-
-  String outPath = "";
-  Directory ll = await getApplicationDocumentsDirectory();
-  outPath = ll.path;
-  debugPrint("hahah_tag 外部目录 : ${ll.path}");
-
-    // 将图片保存为PNG格式
-    final List<int> pngBytes = img.encodePng(image);
-    final File outputFile = File("$outPath/didi.png");
-    await outputFile.writeAsBytes(pngBytes);
-    debugPrint("hahah_tag 转成png大小 : ${outputFile.lengthSync()}");
-    return outputFile.path;
-  }
+  // Future<String> convertImage({required String inputPath}) async {
+  //   final File inputFile = File(inputPath);
+  //   debugPrint("hahah_tag 原始大小 : ${inputFile.lengthSync()}");
+  //   final imageBytes = await inputFile.readAsBytes();
+  //   final img.Image image = img.decodeImage(imageBytes)!;
+  //
+  // String outPath = "";
+  // Directory ll = await getApplicationDocumentsDirectory();
+  // outPath = ll.path;
+  // debugPrint("hahah_tag 外部目录 : ${ll.path}");
+  //
+  //   // 将图片保存为PNG格式
+  //   final List<int> pngBytes = img.encodePng(image);
+  //   final File outputFile = File("$outPath/didi.png");
+  //   await outputFile.writeAsBytes(pngBytes);
+  //   debugPrint("hahah_tag 转成png大小 : ${outputFile.lengthSync()}");
+  //   return outputFile.path;
+  // }
 
   @override
   void deactivate() {
@@ -245,26 +248,26 @@ class _PhotoPageState extends State<PhotoPage> {
     //拿到Canvas
     ui.PictureRecorder recorder = ui.PictureRecorder();
     Canvas canvas = Canvas(recorder);
-
     //拿到Image对象
     ui.Image image = await loadImageByFile(imagePath0);
     width = image.width;
     height = image.height;
+    debugPrint("hahah_tag 原始文件的width : $width , height : $height");
     canvas.drawImage(image, Offset(0, 0), Paint());
     // 绘制文字
     ui.ParagraphBuilder pb = ui.ParagraphBuilder(ui.ParagraphStyle(
         textAlign: TextAlign.left,
         fontWeight: FontWeight.w400,
         fontStyle: FontStyle.normal,
-        fontSize: 100.0));
+        fontSize: 28.0));
     pb.pushStyle(ui.TextStyle(color: Colors.yellowAccent));
-    pb.addText('有一种感动就做只有你懂');
+    pb.addText(formatDateTime(DateTime.now()));
     // 设置文本的宽度约束
-    ParagraphConstraints pc = ui.ParagraphConstraints(width: 2000);
+    ParagraphConstraints pc = ui.ParagraphConstraints(width: 1000);
     ui.Paragraph paragraph = pb.build()..layout(pc);
     canvas.drawParagraph(
         // paragraph, Offset(120, image.height.toDouble() + 20));
-        paragraph, Offset(200, 200));
+        paragraph, Offset(30, 30));
 
     ui.Picture picture = recorder.endRecording();
     final img = await picture.toImage(width.toInt(), height.toInt());
@@ -286,7 +289,8 @@ class _PhotoPageState extends State<PhotoPage> {
 
     File file = File('${_targetPath}watermark${DateTime.now().millisecondsSinceEpoch}.png');
     debugPrint("hahah_tag file.path : ${file.path}");
-    file.writeAsBytesSync(pngBytes!.buffer.asInt8List());
+    debugPrint("hahah_tag 加水印后的file.lengthSync 0 : ${pngBytes!.buffer.asUint8List().length}");
+    file.writeAsBytesSync(pngBytes!.buffer.asUint8List());
     debugPrint("hahah_tag 加水印后的file.lengthSync : ${file.lengthSync()}");
 
     String outPath = "";
@@ -298,12 +302,26 @@ class _PhotoPageState extends State<PhotoPage> {
     var result = await FlutterImageCompress.compressAndGetFile(
       file.path,
       "$outPath/didi.png",
-      quality: 80,
+      quality: 90,
       format: CompressFormat.png
     );
     debugPrint("hahah_tag 压缩后的file.path : ${result!.path}");
     File file2 = File(result!.path);
     debugPrint("hahah_tag 压缩后的file.lengthSync : ${file2.lengthSync()}");
     return file2.path;
+
+    // var result = await FlutterImageCompress.compressWithList(
+    //     pngBytes!.buffer.asUint8List(),
+    //     quality: 80,
+    //     format: CompressFormat.png
+    // );
+    // File file2 = File("$outPath/didi.png");
+    // file2.writeAsBytesSync(result);
+    // debugPrint("hahah_tag 压缩后的file.lengthSync : ${file2.lengthSync()}");
+    // return file2.path;
+  }
+
+  String formatDateTime(DateTime dateTime) {
+    return DateFormat('yyyy-MM-dd HH:mm').format(dateTime);
   }
 }
